@@ -1,0 +1,23 @@
+services:
+  rick-morty-videogame:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rick-morty-videogame
+    restart: unless-stopped
+    ports:
+      - "8095:80"
+    networks:
+      - reverse-proxy
+      - default
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1/health"]
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+networks:
+  reverse-proxy:
+    external: true
+
