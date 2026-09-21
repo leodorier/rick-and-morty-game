@@ -53,7 +53,6 @@ export class BackgroundRenderer {
       const img = new Image();
       img.onload = () => {
         this.loaded.set(key, true);
-        console.log(`[BackgroundRenderer] Successfully loaded asset: ${key}`);
       };
       img.onerror = () => {
         if (paths.length > 1) {

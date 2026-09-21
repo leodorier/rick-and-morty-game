@@ -1,7 +1,36 @@
-node_modules
-dist
+# Source control, editor and agent tooling
 .git
 .gitignore
+.vscode
+.repowise
+.mcp.json
+AGENTS.md
+
+# Docs
+*.md
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and build artefacts
+node_modules
+dist
+build
+.next
+__pycache__
+*.pyc
+.venv
+venv
+
+# Tests and local tooling
 tests
+test-results
+playwright-report
+coverage
 *.log
+
+# OS junk
 .DS_Store
+Thumbs.db
