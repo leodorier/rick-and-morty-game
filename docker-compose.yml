@@ -6,16 +6,27 @@ services:
     container_name: rick-morty-videogame
     restart: unless-stopped
     ports:
-      - "8095:80"
+      - "127.0.0.1:8095:80"
     networks:
       - reverse-proxy
       - default
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1/health"]
       interval: 15s
       timeout: 3s
       retries: 3
       start_period: 5s
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: "0.25"
+          pids: 128
 
 networks:
   reverse-proxy:
